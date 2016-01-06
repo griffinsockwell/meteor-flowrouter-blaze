@@ -1,0 +1,19 @@
+<template name="appBody">
+
+  <header>
+    <nav>
+      <ul>
+        <li>{{> loginButtons}}</li>
+        {{#if currentUser}}
+          <li><a href="/author/{{currentUser.username}}">My Facts</a></li>
+        {{/if}}
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    {{> Template.dynamic template=main}}
+  </section>
+
+</template>

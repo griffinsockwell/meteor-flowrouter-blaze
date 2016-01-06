@@ -1,0 +1,34 @@
+<template name="factForm">
+  <li>
+
+    {{#if showFactForm}}
+      <div class="hide-form">
+        <button>- Cancel</button>
+      </div>
+
+      <form class="new-fact">
+        <select name="planet">
+          <option value="Mercury">Mercury</option>
+          <option value="Venus">Venus</option>
+          <option value="Earth">Earth</option>
+          <option value="Mars">Mars</option>
+          <option value="Jupiter">Jupiter</option>
+          <option value="Saturn">Saturn</option>
+          <option value="Uranus">Uranus</option>
+          <option value="Neptune">Neptune</option>
+        </select>
+        <textarea id="newFactChars" name="fact" maxlength="160" placeholder="Write your fact here..."></textarea>
+        <div>
+          <span>{{charCount}}</span>
+          <input type="submit" value="Submit" disabled="{{submitDisabled}}" />
+        </div>
+      </form>
+
+    {{else}}
+      <div class="show-form">
+        <button>+ Add New Fact</button>
+      </div>
+    {{/if}}
+
+  </li>
+</template>

@@ -1,0 +1,26 @@
+<template name="planet">
+  <ul>
+
+    <li class="planet-header">
+      <h1>Facts for {{planetPage}}</h1>
+    </li>
+
+    {{#if Template.subscriptionsReady}}
+      {{#each planetFacts}}
+        {{> factCard}}
+      {{else}}
+        <div class="no-facts">
+          No users have submitted facts for this planet.
+        </div>
+      {{/each}}
+      {{#if loadMore}}
+        <li class="load-more">
+          <button>Load more Facts</button>
+        </li>
+      {{/if}}
+    {{else}}
+      <div class="loading">Loading...</div>
+    {{/if}}
+
+  </ul>
+</template>

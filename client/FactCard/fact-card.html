@@ -1,0 +1,30 @@
+<template name="factCard">
+  <li class="fact-card">
+    <div>
+      <p>
+        <a class="fact-author" href="/author/{{author}}">{{author}}</a> |
+        <a class="fact-planet" href="/planet/{{planet}}">{{planet}}</a> |
+        <span class="fact-time">{{formatTime submitted}}</span>
+        {{#if factOwner}}
+          {{#if editing}}
+            - <button class="cancel">Cancel</button>
+          {{else}}
+            - <button class="update">Edit</button>
+            | <button class="delete">Delete</button>
+          {{/if}}
+        {{/if}}
+      </p>
+    </div>
+    {{#if editing}}
+      <form class="update-fact">
+        <textarea id="updateFactChars" name="fact" maxlength="160" placeholder="Write your fact here...">{{fact}}</textarea>
+        <div>
+          <span>{{charCount}}</span>
+          <input type="submit" value="Save" disabled="{{updateDisabled}}" />
+        </div>
+      </form>
+    {{else}}
+      <p class="fact-text">{{fact}}</p>
+    {{/if}}
+  </li>
+</template>
