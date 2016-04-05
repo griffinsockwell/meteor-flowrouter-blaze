@@ -1,0 +1,17 @@
+<template name="factList">
+
+    {{#each facts}}
+      {{> factListItem}}
+    {{else}}
+      <div class="no-facts">
+        Sign in to start adding facts!
+      </div>
+    {{/each}}
+
+    {{#if loadMore}}
+      <li class="load-more">
+        <button>Load more Facts</button>
+      </li>
+    {{/if}}
+
+</template>

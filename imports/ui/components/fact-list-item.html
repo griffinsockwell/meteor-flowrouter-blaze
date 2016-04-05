@@ -1,9 +1,9 @@
-<template name="factCard">
-  <li class="fact-card">
+<template name="factListItem">
+  <li class="fact-item">
     <div>
       <p>
-        <a class="fact-author" href="/author/{{author}}">{{author}}</a> |
-        <a class="fact-planet" href="/planet/{{planet}}">{{planet}}</a> |
+        <a class="fact-author" href="/author/{{displayName}}">{{displayName}}</a> |
+        <a class="fact-planet" href="/planet/{{planet}}">{{capitalizePlanet planet}}</a> |
         <span class="fact-time">{{formatTime submitted}}</span>
         {{#if factOwner}}
           {{#if editing}}

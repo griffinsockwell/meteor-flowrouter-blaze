@@ -1,0 +1,15 @@
+<template name="author">
+  <ul>
+
+    <li class="author-header">
+      <h1>Facts from {{authorPage}}</h1>
+    </li>
+
+    {{#if canAddFact}}
+      {{> newFactForm}}
+    {{/if}}
+
+    {{> factList subscription="author-facts" param=authorPage }}
+
+  </ul>
+</template>

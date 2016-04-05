@@ -1,0 +1,11 @@
+<template name="planet">
+  <ul>
+
+    <li class="planet-header">
+      <h1>Facts for {{capitalizePlanet planetPage}}</h1>
+    </li>
+
+    {{> factList subscription="planet-facts" param=planetPage }}
+
+  </ul>
+</template>

@@ -1,28 +1,34 @@
-Template.factForm.onCreated(() => {
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
+
+import './new-fact-form.html';
+
+Template.newFactForm.onCreated(() => {
   Template.instance().showForm = new ReactiveVar(false);
   Template.instance().newFactChars = new ReactiveVar(0);
 });
 
-Template.factForm.helpers({
+Template.newFactForm.helpers({
   showFactForm() {
     return Template.instance().showForm.get();
   },
   submitDisabled() {
-    let factChars = Template.instance().newFactChars.get();
-    return (factChars > 0 && factChars <= 160 ? false : true);
+    const factChars = Template.instance().newFactChars.get();
+    return !Boolean(factChars > 0 && factChars <= 160);
   },
   charCount() {
-    let factChars = Template.instance().newFactChars.get();
-    return parseInt(160 - factChars);
-  }
+    const factChars = Template.instance().newFactChars.get();
+    return parseInt(160 - factChars, 10);
+  },
 });
 
-Template.factForm.events({
+Template.newFactForm.events({
   'submit form.new-fact'(event, template) {
     event.preventDefault();
 
-    let planet = event.target.planet.value;
-    let fact = event.target.fact.value;
+    const planet = event.target.planet.value;
+    const fact = event.target.fact.value;
 
     Meteor.call('addFact', planet, fact);
 
@@ -30,7 +36,7 @@ Template.factForm.events({
     template.showForm.set(false);
   },
   'keyup #newFactChars'(event, template) {
-    let charLength = document.getElementById('newFactChars').value.length;
+    const charLength = document.getElementById('newFactChars').value.length;
     template.newFactChars.set(charLength);
   },
   'click .show-form'(event, template) {
@@ -39,5 +45,5 @@ Template.factForm.events({
   'click .hide-form'(event, template) {
     template.showForm.set(false);
     template.newFactChars.set(0);
-  }
+  },
 });
